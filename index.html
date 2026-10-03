@@ -1,75 +1,116 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hero Page</title>
 
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">    
-    
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <main>
 
-    <main id="hero">
+        <!-- HERO -->
+        <div id="hero">
 
-        <!-- HERO 1 -->
-        <section id="hero-top" class="hero-section">
+            <!-- 1. SCREEN -->
+            <section id="hero-top" class="page-section hero-section">
 
-            <div class="content content-left">
-                <h1>StarFinder Pro</h1>
+                <div class="content content-right">
+
+                    <h1>StarFinder Pro</h1>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+
+                    <a href="#hero-middle" class="button">
+                        tovább
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- 2. SCREEN -->
+            <section id="hero-middle" class="page-section hero-section">
+
+                <div class="content content-left">
+
+                    <h2></h2>
+
+                    <p>
+                        Paragraph 1
+                    </p>
+
+                    <a href="#hero-bottom" class="button">
+                        tovább
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- 3. SCREEN -->
+            <section id="hero-bottom" class="page-section hero-section">
+
+                <div class="content form-section">
+
+                    <h3>Töltse ki kérdőívünket</h3>
+
+                    <p>
+                        <a href="https://forms.cloud.microsoft/r/nPfVAUiygM">Link a kérdőívhez</a>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- DOCUMENTS -->
+        <section id="documents" class="page-section documents-section">
+
+            <div class="content">
+
+                <h2>Dokumentumok</h2>
 
                 <p>
-                    Szöveg szövegSzöveg szövegSzöveg szövegSzöveg szövegSzöveg szövegSzöveg szövegSzöveg szövegSzöveg szövegSzöveg szöveg
-                
+                    Itt lesznek majd a dokumentumok.
                 </p>
 
-                <a href="#hero-bottom" class="button">
-                    tovább
-                </a>
             </div>
 
-        </section>
-
-
-        <!-- HERO 2 -->
-        <section id="hero-bottom" class="hero-section">
-
-            <div class="content content-right">
-                <h2>Heading 2</h2>
+            <footer>
 
                 <p>
-                    Paragraph 1
+                    Itt meg a footer lesz.
                 </p>
 
-                <a href="#form" class="button">
-                    űrlap
-                </a>
-            </div>
+            </footer>
 
         </section>
 
     </main>
 
-
-    <!-- =========================
-         FORM PLACEHOLDER
-    ========================== -->
-
-    <section id="form" class="form-placeholder">
-    </section>
-
-
     <script src="./script.js"></script>
 
 </body>
+
 </html>

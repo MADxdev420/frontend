@@ -1,37 +1,24 @@
-
-/* =========================
-   RESET
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-
-/* =========================
-   HTML / BODY
-========================= */
-
 html {
-    width: 100%;
-    min-height: 100%;
-
-    overflow-x: hidden;
+    scroll-behavior: auto;
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
-
-    overflow-x: hidden;
 }
 
+h3 {
+  font-size: x-large;
+}
 
 /* =========================
    HERO
-========================= */
+   ========================= */
 
 #hero {
     position: relative;
@@ -39,49 +26,20 @@ body {
     width: 100%;
     height: 300vh;
 
-    /*
-        A kép eredeti aránya:
-
-        2160 / 3840 = 0.5625
-
-        Tehát 9:16 portrait.
-    */
-
-    background-image: url("./assets/hero.png");
-
-    /*
-        A teljes kép magassága pontosan
-        a két viewport magassága legyen.
-
-        Az aspect ratio NEM torzul.
-    */
+    background-image: url("./assets/hero1.png");
     background-size: cover;
-
-    background-repeat: no-repeat;
-
-    /*
-        Desktopon a kép középen marad.
-        Ha a viewport szélesebb, a két oldalon
-        levágódik a kép helyett, hogy széthúznánk.
-    */
     background-position: center bottom;
-
-    /*
-        Ne mozduljon el a háttér a viewporttal.
-    */
-    background-attachment: scroll;
+    background-repeat: no-repeat;
 }
 
 
 /* =========================
-   HERO SECTION
-========================= */
+   SECTIONS
+   ========================= */
 
-.hero-section {
-    position: relative;
-
-    width: 100%;
+.page-section {
     height: 100vh;
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -90,31 +48,42 @@ body {
 }
 
 
+.hero-section {
+    height: 100vh;
+}
+
+
 /* =========================
    CONTENT
-========================= */
+   ========================= */
 
 .content {
     max-width: 500px;
 
-    background-color: rgba(240, 248, 255, 0.2);
-    backdrop-filter: blur(10px);
-
-    font-family: "Orbitron", sans-serif;
-
-    border-radius: 7%;
-    
     display: flex;
     flex-direction: column;
+
     gap: 1.5rem;
 
     padding: 2rem;
+
+    background: rgba(198, 220, 240, 0.306);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(151, 151, 155, 0.8);
+    border-radius: 20px;
+
+    font-family: "Orbitron", sans-serif;
 }
+
 
 .content-left {
     align-items: flex-start;
     text-align: left;
 }
+
 
 .content-right {
     margin-left: auto;
@@ -126,32 +95,36 @@ body {
 
 /* =========================
    TYPOGRAPHY
-========================= */
+   ========================= */
 
 h1,
 h2 {
+    font-family: "Orbitron", sans-serif;
+
     font-size: clamp(2.5rem, 5vw, 5rem);
 }
 
+
 p {
     font-size: clamp(1rem, 1.5vw, 1.5rem);
+
     line-height: 1.6;
 }
 
 
 /* =========================
    BUTTON
-========================= */
+   ========================= */
 
 .button {
     display: inline-block;
 
     padding: 0.9rem 1.8rem;
 
-    color: #ffffff;
-    background: #222222;
-
     text-decoration: none;
+
+    color: #fff;
+    background: #222;
 
     border-radius: 0.5rem;
 
@@ -160,6 +133,7 @@ p {
         opacity 0.2s ease;
 }
 
+
 .button:hover {
     transform: translateY(-2px);
     opacity: 0.85;
@@ -167,90 +141,51 @@ p {
 
 
 /* =========================
-   FORM
-========================= */
+   DOCUMENTS
+   ========================= */
 
-#form {
+.documents-section {
+    background: #000000;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
     width: 100%;
-    height: 100vh;
 
-    background: #b7dcb7;
+    padding: 1.5rem;
+
+    text-align: center;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 0.8rem;
+
+    opacity: 0.7;
+
+    color: #fff;
 }
-
 
 /* =========================
-   TABLET
-========================= */
+  FORM
+  ========================= */
 
-@media (max-width: 1024px) {
+  .form-section {
+    gap: 1.5rem;
 
-    .hero-section {
-        padding: 6vw;
-    }
+    padding: 2rem;
+    margin-right: 4rem;   
 
-    .content {
-        max-width: 450px;
-        padding: 1.5rem;
-    }
-}
+    margin-left: auto;
+    align-items: flex-start;
+    text-align: left;
+  }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    #hero {
-        /*
-            Mobilon a 9:16 kép sokkal jobban
-            illeszkedik a portrait viewporthoz.
-
-            Továbbra is a teljes kép magassága
-            pontosan 200vh.
-        */
-        background-size: auto 100%;
-
-        background-position: center top;
-    }
-
-
-    .hero-section {
-        height: 100vh;
-
-        padding: 1.5rem;
-    }
-
-
-    .content {
-        width: 100%;
-        max-width: none;
-
-        padding: 1.25rem;
-    }
-
-
-    .content-right {
-        margin-left: 0;
-
-        align-items: flex-end;
-        text-align: right;
-    }
-
-
-    h1,
-    h2 {
-        font-size: clamp(2.2rem, 11vw, 4rem);
-    }
-
-
-    p {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-
-    .button {
-        padding: 0.8rem 1.4rem;
-    }
-}
+  

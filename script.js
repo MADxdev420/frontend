@@ -1,33 +1,20 @@
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll(".page-section");
 
-const DURATION = 1000; // ms
+const DURATION = 1000;
 
 let currentSection = 0;
 let isScrolling = false;
 
 
-/*
- * Ease-in-out függvény.
- *
- * 0 → 0
- * 0.5 → 0.5
- * 1 → 1
- *
- * Az elején lassan indul,
- * középen felgyorsul,
- * a végén pedig ismét lelassul.
- */
 function easeInOut(t) {
+
     return t < 0.5
         ? 2 * t * t
         : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
 }
 
 
-/*
- * Az aktuális scroll pozícióból
- * animálunk a célpozícióig.
- */
 function scrollToSection(index) {
 
     if (index < 0 || index >= sections.length) {
@@ -39,6 +26,7 @@ function scrollToSection(index) {
     }
 
     isScrolling = true;
+
 
     const startPosition = window.scrollY;
 
@@ -53,27 +41,13 @@ function scrollToSection(index) {
 
         const elapsed = currentTime - startTime;
 
-        /*
-         * 0 és 1 közötti érték.
-         *
-         * 0 = animáció kezdete
-         * 1 = animáció vége
-         */
         const progress = Math.min(
             elapsed / DURATION,
             1
         );
 
-
-        /*
-         * Ease-in-out alkalmazása.
-         */
         const easedProgress = easeInOut(progress);
 
-
-        /*
-         * Új scroll pozíció kiszámítása.
-         */
         const currentPosition =
             startPosition +
             distance * easedProgress;
@@ -85,20 +59,12 @@ function scrollToSection(index) {
         );
 
 
-        /*
-         * Ha még nem értünk a végére,
-         * folytatjuk az animációt.
-         */
         if (progress < 1) {
 
             requestAnimationFrame(animate);
 
         } else {
 
-            /*
-             * Biztosan pontosan a section tetején
-             * állunk meg.
-             */
             window.scrollTo(
                 0,
                 targetPosition
@@ -107,7 +73,9 @@ function scrollToSection(index) {
             currentSection = index;
 
             isScrolling = false;
+
         }
+
     }
 
 
@@ -115,11 +83,10 @@ function scrollToSection(index) {
 }
 
 
-/*
- * EGÉRKERÉK
- *
- * A natív scroll teljesen le van tiltva.
- */
+/* =========================
+   MOUSE WHEEL
+   ========================= */
+
 window.addEventListener(
     "wheel",
     function (event) {
@@ -127,22 +94,11 @@ window.addEventListener(
         event.preventDefault();
 
 
-        /*
-         * Ha éppen animáció zajlik,
-         * figyelmen kívül hagyjuk
-         * az újabb wheel eseményt.
-         */
         if (isScrolling) {
             return;
         }
 
 
-        /*
-         * deltaY:
-         *
-         * pozitív → lefelé
-         * negatív → felfelé
-         */
         if (event.deltaY > 0) {
 
             currentSection++;
@@ -150,13 +106,10 @@ window.addEventListener(
         } else if (event.deltaY < 0) {
 
             currentSection--;
+
         }
 
 
-        /*
-         * Ne menjünk a legfelső section fölé
-         * vagy a legalsó alá.
-         */
         currentSection = Math.max(
             0,
             Math.min(
@@ -173,3 +126,49 @@ window.addEventListener(
         passive: false
     }
 );
+
+
+/* =========================
+   ANCHOR LINKS
+   ========================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                const index =
+                    Array.from(sections)
+                        .indexOf(target);
+
+
+                if (index === -1) {
+                    return;
+                }
+
+
+                currentSection = index;
+
+                scrollToSection(index);
+
+            }
+        );
+
+    });
