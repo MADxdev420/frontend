@@ -1,3 +1,12 @@
+/* StarFinder — cosmic glass interface */
+:root {
+    color-scheme: dark;
+    --text: #eef5ff;
+    --muted: #c1cde0;
+    --cyan: #79e6ff;
+    --violet: #a999ff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,221 +16,266 @@
 
 html {
     scroll-behavior: auto;
+    background: #030711;
 }
 
 body {
     min-height: 100vh;
-    background-color: #000000;
+    background: #030711;
+    color: var(--text);
+    font-family: "Orbitron", sans-serif;
 }
-
-h3 {
-    font-size: x-large;
-}
-
-h1 {
-    position: relative;
-    z-index: 1;
-}
-
-h1::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgb(0, 0, 0);
-    border-radius: 50%;
-    filter: blur(20px);
-    z-index: -1;
-}
-
-/* =========================
-   HERO
-   ========================= */
 
 #hero {
     position: relative;
-
     width: 100%;
     height: 300vh;
-
-    background-image: url("./assets/hero1.png");
+    background-image: linear-gradient(180deg, rgba(3, 7, 17, 0.12), rgba(3, 7, 17, 0.08) 60%, #030711), url("./assets/hero1.png");
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
 }
 
-
-/* =========================
-   SECTIONS
-   ========================= */
-
 .page-section {
     height: 100vh;
     position: relative;
-
     display: flex;
     align-items: center;
-
     padding: 5vw;
 }
-
 
 .hero-section {
     height: 100vh;
 }
 
-
-/* =========================
-   CONTENT
-   ========================= */
-
 .content {
     max-width: 500px;
-
-    color:rgb(204, 204, 204);
+    min-width: 0;
+    color: var(--muted);
     display: flex;
     flex-direction: column;
-
     gap: 1.5rem;
-
     padding: 2rem;
-
-    background: rgba(198, 220, 240, 0.306);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(151, 151, 155, 0.8);
+    background: linear-gradient(135deg, rgba(24, 43, 68, 0.82), rgba(9, 15, 33, 0.88));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(121, 230, 255, 0.28);
     border-radius: 20px;
-
-    font-family: "Orbitron", sans-serif;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(224, 245, 255, 0.12), 0 0 32px rgba(93, 115, 255, 0.08);
+    overflow-wrap: anywhere;
 }
-
 
 .content-left {
     align-items: flex-start;
     text-align: left;
 }
 
-
 .content-right {
     margin-left: auto;
-
     align-items: flex-end;
     text-align: right;
 }
 
-
-/* =========================
-   TYPOGRAPHY
-   ========================= */
+h1, h2, h3 {
+    color: var(--text);
+    font-family: "Orbitron", sans-serif;
+    line-height: 1.2;
+    text-wrap: balance;
+}
 
 h1 {
-    font-family: "Orbitron", sans-serif;
-
+    position: relative;
+    z-index: 1;
     font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--cyan);
+    text-shadow: 0 0 28px rgba(121, 230, 255, 0.3);
 }
 
 h2 {
-    font-family: "Orbitron", sans-serif;
-
-    font-size: clamp(2.5rem, 2vw, 5rem);    
+    font-size: clamp(2.5rem, 2vw, 5rem);
 }
 
+h3 {
+    font-size: x-large;
+}
 
 p {
     font-size: clamp(1rem, 1.5vw, 1.5rem);
-
     line-height: 1.6;
 }
 
-
-/* =========================
-   BUTTON
-   ========================= */
-
 .button {
-    display: inline-block;
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    max-width: 100%;
     padding: 0.5rem 1.6rem;
-
-    text-decoration: none;
-
-    color: #fff;
-    background: #222;
-
+    border: 1px solid rgba(184, 236, 255, 0.55);
     border-radius: 0.5rem;
-
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+    color: #071120;
+    background: linear-gradient(115deg, var(--cyan), var(--violet));
+    font-weight: 700;
+    line-height: 1.5;
+    box-shadow: 0 4px 20px rgba(102, 171, 255, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.button:hover {
-    transform: translateY(-2px);
-    opacity: 0.85;
+@media (hover: hover) {
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(121, 230, 255, 0.32);
+    }
 }
 
-
-/* =========================
-   DOCUMENTS
-   ========================= */
+.button:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 5px;
+}
 
 .documents-section {
-    background: #000000;
-
+    background: radial-gradient(ellipse at top, rgba(53, 63, 128, 0.24), transparent 65%), #030711;
     flex-direction: column;
-
     justify-content: space-between;
+    gap: 2rem;
 }
-
-
-/* =========================
-   FOOTER
-   ========================= */
 
 footer {
     width: 100%;
-
     padding: 1.5rem;
-
     text-align: center;
-
     font-family: "Orbitron", sans-serif;
-
     font-size: 0.8rem;
-
-    opacity: 0.7;
-
-    color: #fff;
+    color: var(--muted);
 }
 
-/* =========================
-  FORM
-  ========================= */
-
-  .form-section {
+.form-section {
     gap: 1.5rem;
-
     padding: 2rem;
-    margin-right: 4rem;   
-
+    margin-right: 4rem;
     margin-left: auto;
     align-items: flex-start;
     text-align: left;
-  }
+}
 
-  /* ==========================
-   TABLET VIEW (768px–1024px)
-   ========================== */
-
-@media screen and (max-width: 768px) {
-
-    /* Ide jönnek a tablet-specifikus CSS szabályok */
-
+/* Tablet: allow each section to grow when its content needs more room. */
+@media screen and (max-width: 1024px) {
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #hero {
+        height: auto;
+        min-height: 300vh;
+    }
+
+    .page-section {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 3rem 5vw;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 500px;
+        padding: 1.75rem;
+        gap: 1.25rem;
+    }
+
+    .form-section {
+        margin-right: 0;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.875rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    p, .button {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Mobile: compact typography and comfortable touch targets. */
+@media screen and (max-width: 600px) {
+    #hero {
+        min-height: 0;
+    }
+
+    .page-section {
+        padding: 2rem 1rem;
+    }
+
+    .content {
+        max-width: 100%;
+        padding: 1.25rem;
+        gap: 1rem;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.0625rem;
+    }
+
+    p, .button {
+        font-size: 0.875rem;
+    }
+
+    p {
+        line-height: 1.7;
+    }
+
+    .button {
+        min-height: 44px;
+        padding: 0.625rem 1.25rem;
+    }
+
+    footer {
+        padding: 1rem 0;
+    }
+}
+
+/* Short tablet and desktop windows also need space for the full cards. */
+@media screen and (min-width: 1025px) and (max-height: 700px) {
+    #hero {
+        height: auto;
+    }
+
+    .page-section {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+    }
+
+    .button:hover {
+        transform: none;
     }
 }
