@@ -136,10 +136,138 @@ p {
 }
 
 .documents-section {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
     background: radial-gradient(ellipse at top, rgba(53, 63, 128, 0.24), transparent 65%), #030711;
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
+}
+
+.documents-container,
+.documents-container * {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.documents-container {
+    width: 100%;
+    max-width: 1100px;
+    min-width: 0;
+}
+
+.documents-heading {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.documents-heading p {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.documents-heading .documents-note {
+    font-size: 0.8125rem;
+}
+
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.document-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    min-width: 0;
+    padding: 1.5rem;
+    border: 1px solid rgba(121, 230, 255, 0.28);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(24, 43, 68, 0.82), rgba(9, 15, 33, 0.88));
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(224, 245, 255, 0.1);
+    overflow-wrap: anywhere;
+}
+
+.document-type {
+    color: var(--cyan);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+}
+
+.document-card h3 {
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.document-open {
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* Stretch the opening link over the card, keeping download independent. */
+.document-open::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+}
+
+.document-open-hint {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+
+.document-card .document-download {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+}
+
+.document-open:focus-visible {
+    outline: none;
+}
+
+.document-open:focus-visible::after {
+    outline: 3px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+@media (hover: hover) {
+    .document-card:hover {
+        border-color: var(--cyan);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24), 0 0 24px rgba(121, 230, 255, 0.12);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .documents-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .document-card {
+        padding: 1.25rem;
+    }
+
+    .document-card h3 {
+        font-size: 1rem;
+    }
+
+    .documents-heading p {
+        font-size: 0.875rem;
+    }
 }
 
 footer {
