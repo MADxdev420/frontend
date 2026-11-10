@@ -49,7 +49,7 @@ body {
 }
 
 .content {
-    max-width: 500px;
+    max-width: 600px;
     min-width: 0;
     color: var(--muted);
     display: flex;
@@ -85,6 +85,7 @@ h1, h2, h3 {
 
 h1 {
     position: relative;
+    white-space: nowrap;
     z-index: 1;
     font-size: clamp(2.5rem, 5vw, 5rem);
     color: var(--cyan);
@@ -251,25 +252,6 @@ p {
     }
 }
 
-@media screen and (max-width: 600px) {
-    .documents-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1rem;
-    }
-
-    .document-card {
-        padding: 1.25rem;
-    }
-
-    .document-card h3 {
-        font-size: 1rem;
-    }
-
-    .documents-heading p {
-        font-size: 0.875rem;
-    }
-}
-
 footer {
     width: 100%;
     padding: 1.5rem;
@@ -383,6 +365,32 @@ footer {
 
     footer {
         padding: 1rem 0;
+    }
+}
+
+/* Keep the space around the shared card grid compact on phones. */
+@media screen and (max-width: 600px),
+       screen and (max-width: 1024px) and (max-height: 500px) and (orientation: landscape) and (pointer: coarse) {
+    .documents-section {
+        --documents-gap: clamp(0.375rem, 1.6svh, 1rem);
+        gap: var(--documents-gap);
+        padding: var(--documents-gap) 0.75rem;
+    }
+
+    .documents-section .documents-heading {
+        margin: 0 0 var(--documents-gap);
+    }
+
+    .documents-heading h2 {
+        font-size: clamp(1.125rem, 4svh, 1.5rem);
+    }
+
+    .documents-section footer {
+        padding: 0;
+    }
+
+    .documents-section footer p {
+        line-height: 1.25;
     }
 }
 
