@@ -73,7 +73,7 @@ body {
 .content-right {
     margin-left: auto;
     align-items: flex-end;
-    text-align: right;
+    text-align: left;
 }
 
 h1, h2, h3 {
