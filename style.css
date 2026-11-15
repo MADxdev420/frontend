@@ -65,6 +65,17 @@ body {
     overflow-wrap: anywhere;
 }
 
+.link-container {
+    align-items: center;
+    text-align: center;
+    margin: 2px;
+    padding-top: 16px;
+}
+
+.link-container p {
+    font-size: smaller;
+}
+
 .content-left {
     align-items: flex-start;
     text-align: left;
